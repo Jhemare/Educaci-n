@@ -441,51 +441,110 @@ header {
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
 }
 
-.gallery {
-    padding: 40px 20px;
-    background-color: #f9f9f9;
-    text-align: center;
-}
 
-.gallery h2 {
-    font-size: 2em;
-    margin-bottom: 20px;
-    color: #333;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
 
-.gallery-grid {
+
+
+
+/* Estilo general para la sección de socios */
+.partner-area {
+    padding: 80px 0;
     display: flex;
     justify-content: center;
-    gap: 20px;
+    align-items: center;
     flex-wrap: wrap;
 }
 
-.gallery-item {
-    background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    width: 150px;
+/* Contenedor para los logos */
+.partners-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 40px; /* Mayor separación entre los elementos */
+}
+
+/* Estilo de cada item */
+.partner-item {
+    width: 180px; /* Tamaño fijo para la consistencia */
+    height: 220px; /* Aumento en altura para dar espacio al texto */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: visible; /* Asegura que el texto esté visible fuera del contenedor */
+    transition: transform 0.4s ease;
 }
 
-.gallery-item i {
-    font-size: 3em;
-    color: #3498db;
-    margin-bottom: 10px;
+/* Estilo de la imagen dentro del item */
+.partner-item img {
+    width: 100%; /* Asegura que la imagen ocupe todo el contenedor */
+    height: auto; /* Mantiene la proporción de la imagen */
+    max-height: 180px; /* Altura máxima consistente */
+    border-radius: 0; /* Sin bordes redondeados */
+    box-shadow: none; /* Sin sombra */
+    transition: transform 0.4s ease;
 }
 
-.gallery-item p {
-    margin: 0;
-    font-size: 1em;
-    color: #555;
+/* Estilo del texto debajo de la imagen */
+.partner-item p {
+    margin-top: 12px;
+    font-size: 16px;
+    color: #333;
+    font-weight: 600;
+    transition: color 0.4s ease;
+    white-space: nowrap; /* Evita el salto de línea en el texto */
 }
 
-.gallery-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+/* Efecto hover para el item */
+.partner-item:hover {
+    transform: scale(1.05); /* Escalado leve */
+}
+
+/* Efecto hover para la imagen */
+.partner-item:hover img {
+    transform: scale(1.05); /* Escalado leve */
+}
+
+/* Efecto hover para el texto */
+.partner-item:hover p {
+    color: #007bff; /* Color de texto en hover */
+}
+
+/* Estilos responsivos */
+@media (max-width: 992px) {
+    .partner-item {
+        width: 160px;
+        height: 200px; /* Ajuste para pantallas más pequeñas */
+    }
+
+    .partner-item p {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 768px) {
+    .partner-item {
+        width: 140px;
+        height: 180px; /* Ajuste para pantallas más pequeñas */
+    }
+
+    .partner-item p {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 576px) {
+    .partner-item {
+        width: 120px;
+        height: 160px; /* Ajuste para pantallas más pequeñas */
+    }
+
+    .partner-item p {
+        font-size: 10px;
+    }
 }
 
 
@@ -944,3 +1003,53 @@ footer {
 .footer-social .social-icon:hover {
     color: #3498db;
 }
+
+
+
+/* Estilo general para el chatbot */
+.chatbot-widget {
+    position: fixed;
+    bottom: 20px; /* Espacio desde el fondo */
+    left: 20px; /* Espacio desde el borde izquierdo */
+    z-index: 1000; /* Asegura que el chatbot esté encima de otros elementos */
+}
+
+/* Botón para abrir/cerrar el chatbot */
+#chatbot-toggle {
+    background-color: #007bff; /* Color de fondo del botón */
+    border: none;
+    border-radius: 50%; /* Hacer el botón circular */
+    padding: 10px; /* Espaciado alrededor del ícono */
+    cursor: pointer;
+    outline: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    color: #fff; /* Color del ícono */
+    font-size: 24px; /* Tamaño del ícono */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Estilo para el contenido del chatbot */
+.chatbot-content {
+    display: none; /* Ocultar el contenido del chatbot por defecto */
+    position: absolute;
+    top: 70px; /* Espacio desde el botón */
+    left: 0;
+    width: 300px; /* Ancho del widget del chatbot */
+    height: 400px; /* Alto del widget del chatbot */
+    background-color: #fff; /* Color de fondo del contenido */
+    border: 1px solid #ddd; /* Borde alrededor del contenido */
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Mostrar el contenido del chatbot cuando está activo */
+.chatbot-content.active {
+    display: block;
+}
+
+/* Efectos hover para el ícono */
+#chatbot-toggle:hover {
+    transform: scale(1.1); /* Aumento de tamaño del ícono en hover */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3); /* Aumento de sombra en hover */
+}
+
