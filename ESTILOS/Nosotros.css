@@ -1,0 +1,984 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    color: #333;
+    background-color: #f4f4f9;
+    line-height: 1.6;
+}
+
+header {
+    background: rgba(31, 42, 56, 0.8);
+    color: #fff;
+    padding: 15px 0;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+    animation: slideDown 0.5s ease-out;
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo img {
+    height: 60px;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.logo img:hover {
+    transform: scale(1.1);
+    filter: brightness(1.1);
+}
+
+.navegadores {
+    display: flex;
+    align-items: center;
+}
+
+.navegadores ul {
+    list-style: none;
+    display: flex;
+    gap: 10px;
+}
+
+.navegadores > ul > li {
+    position: relative;
+}
+
+.navegadores a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 12px;
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
+    display: flex;
+    align-items: center;
+    text-transform: uppercase;
+}
+
+.navegadores li > .submenu-trigger::after {
+    content: "\f107";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    margin-left: 8px;
+    transition: transform 0.3s ease;
+}
+
+.navegadores a:hover,
+.navegadores a:focus {
+    background: #2c3e50;
+    color: #f39c12;
+    transform: translateY(-2px);
+}
+
+.submenu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #2c3e50;
+    border-radius: 6px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    z-index: 20;
+    min-width: 180px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.submenu.show {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.navegadores > ul > li:hover > .submenu,
+.navegadores > ul > li:hover > a {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.navegadores li:hover > a::after {
+    transform: rotate(180deg);
+}
+
+.register-button {
+    display: flex;
+    align-items: center;
+}
+
+.btn-register {
+    background: #f39c12;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.btn-register:hover,
+.btn-register:focus {
+    background: #e67e22;
+    transform: scale(1.05);
+}
+
+
+/* Estilos Generales */
+
+
+/* Sección Títulos */
+.titulos {
+    background-color: #e67e22; /* Naranja */
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 100px; /* Asegura que no se superponga con el header fijo */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.titulos h1 {
+    font-size: 2.5em;
+    font-weight: bold;
+    text-transform: uppercase;
+    position: relative;
+    z-index: 2;
+}
+
+.titulos::before {
+    content: '';
+    position: absolute;
+    width: 150%;
+    height: 300%;
+    background: rgba(255, 255, 255, 0.1);
+    top: -50%;
+    left: -50%;
+    transform: rotate(45deg);
+    transition: all 0.5s ease;
+    z-index: 1;
+}
+
+.titulos:hover::before {
+    transform: rotate(45deg) translate(10px, 10px);
+}
+
+/* Sección Misión y Visión */
+.mission-vision {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 40px 0;
+    background: #fdfdfd;
+    background-image: url('https://images.unsplash.com/photo-1502920917128-1aa500764b47?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'); /* Imagen de fondo de mina */
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    overflow: hidden;
+    margin-top: 30px;
+}
+
+.mission-vision::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.85);
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.mission-vision .container {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.mission, .vision {
+    width: 45%;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, background 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.mission:hover, .vision:hover {
+    transform: translateY(-10px);
+    background: rgba(255, 255, 255, 1);
+}
+
+.mission h2, .vision h2 {
+    font-size: 1.8em;
+    color: #d35400; /* Naranja */
+    position: relative;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.mission p, .vision p {
+    font-size: 1.1em;
+    color: #333;
+    line-height: 1.8;
+}
+
+.mission::after, .vision::after {
+    content: '';
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    background: #d35400; /* Naranja */
+    border-radius: 50%;
+    opacity: 0.2;
+    top: -30px;
+    right: -30px;
+    transition: all 0.5s ease;
+}
+
+.mission:hover::after, .vision:hover::after {
+    width: 180px;
+    height: 180px;
+    top: -40px;
+    right: -40px;
+    opacity: 0.3;
+}
+
+/* Formas de Mina */
+.mission-vision::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('https://images.unsplash.com/photo-1502920917128-1aa500764b47?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+    opacity: 0.05;
+    z-index: 0;
+    pointer-events: none;
+}
+
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+.banner-slider {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 50px; /* Espacio superior */
+}
+
+.slider-container {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    width: 300%; /* Para que el contenedor pueda alojar 3 diapositivas */
+}
+
+.banner-slide {
+    width: 100%;
+    flex: 0 0 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-size: cover;
+    background-position: center;
+    height: 400px; /* Altura del slider */
+    position: relative;
+}
+
+.banner-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 80%;
+    margin: 0 auto;
+    color: #fff;
+}
+
+.text-section {
+    flex: 1;
+    margin-right: 20px;
+}
+
+.text-section h2 {
+    font-size: 2em;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.text-section p {
+    font-size: 1.2em;
+    margin-bottom: 15px;
+}
+
+.btn-primary {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #e67e22;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #d35400;
+}
+
+.image-section {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Para asegurarse de que las imágenes no se salgan del contenedor */
+    width: 100%;
+    height: 100%;
+}
+
+.image-section img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Asegura que la imagen cubra todo el contenedor */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilos generales del slider */
+.banner-slider {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+  }
+  
+  .slider-container {
+    display: flex;
+    transition: transform 0.8s ease;
+    width: 300%;
+  }
+  
+  .banner-slide {
+    flex: 1 0 100%;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+  }
+  
+  .banner-content {
+    position: absolute;
+    top: 50%;
+    left: 10%;
+    transform: translateY(-50%);
+    color: #fff;
+    text-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    max-width: 600px;
+  }
+  
+  .text-section h2 {
+    font-size: 48px;
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
+  
+  .text-section p {
+    font-size: 24px;
+    font-weight: 300;
+    margin-bottom: 30px;
+  }
+  
+  .text-section a.btn-primary {
+    display: inline-block;
+    padding: 15px 30px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .text-section a.btn-primary:hover {
+    background-color: #0056b3;
+  }
+  
+  .image-section img {
+    max-width: 300px;
+    display: none;
+  }
+  
+
+
+
+
+  /* Sección Carrusel de Imágenes */
+.full-screen-carousel {
+    position: relative;
+    width: 100%;
+    height: 100vh; /* Ocupa toda la altura de la pantalla */
+    overflow: hidden;
+}
+
+.carousel-container {
+    display: flex;
+    width: 300%; /* Asume que hay 3 diapositivas, puedes ajustar según la cantidad */
+    height: 100%;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel-slide {
+    flex: 1 0 100%; /* Cada diapositiva ocupa el 100% del ancho del contenedor */
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.carousel-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.carousel-content {
+    position: absolute;
+    bottom: 20%;
+    left: 10%;
+    color: #fff;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+    max-width: 600px;
+    z-index: 2;
+}
+
+.carousel-content h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.carousel-content p {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.btn-primary {
+    display: inline-block;
+    background-color: #f39c12;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+    background-color: #e67e22;
+    transform: scale(1.05);
+}
+
+/* Sección Carrusel de Imágenes */
+.full-screen-carousel {
+    position: relative;
+    width: 100%;
+    height: 100vh; /* Ocupa toda la altura de la pantalla */
+    overflow: hidden;
+}
+
+.carousel-container {
+    display: flex;
+    width: 300%; /* Asume que hay 3 diapositivas, puedes ajustar según la cantidad */
+    height: 100%;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel-slide {
+    flex: 1 0 100%; /* Cada diapositiva ocupa el 100% del ancho del contenedor */
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.carousel-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.carousel-content {
+    position: absolute;
+    bottom: 20%;
+    left: 10%;
+    color: #fff;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+    max-width: 600px;
+    z-index: 2;
+}
+
+.carousel-content h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.carousel-content p {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.btn-primary {
+    display: inline-block;
+    background-color: #f39c12;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+    background-color: #e67e22;
+    transform: scale(1.05);
+}
+
+/* Sección Carrusel de Imágenes */
+.full-screen-carousel {
+    position: relative;
+    width: 100%;
+    height: 100vh; /* Ocupa toda la altura de la pantalla */
+    overflow: hidden;
+}
+
+.carousel-container {
+    display: flex;
+    width: 300%; /* Asume que hay 3 diapositivas, ajusta según la cantidad */
+    height: 100%;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel-slide {
+    flex: 1 0 100%; /* Cada diapositiva ocupa el 100% del ancho del contenedor */
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.carousel-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ajusta la imagen para cubrir el contenedor */
+    /* Alternativa: object-fit: contain; para ajustar la imagen dentro del contenedor sin recortar */
+}
+
+.carousel-content {
+    position: absolute;
+    bottom: 20%;
+    left: 10%;
+    color: #fff;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+    max-width: 600px;
+    z-index: 2;
+}
+
+.carousel-content h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.carousel-content p {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.btn-primary {
+    display: inline-block;
+    background-color: #f39c12;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+    background-color: #e67e22;
+    transform: scale(1.05);
+}
+
+
+/* Sección Carrusel de Imágenes */
+.full-screen-carousel {
+    position: relative;
+    width: 100%;
+    height: 100vh; /* Ocupa toda la altura de la pantalla */
+    overflow: hidden;
+}
+
+.carousel-container {
+    display: flex;
+    width: 100%; /* Asume que hay 3 diapositivas, ajusta según la cantidad */
+    height: 100%;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel-slide {
+    flex: 1 0 100%; /* Cada diapositiva ocupa el 100% del ancho del contenedor */
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.carousel-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ajusta la imagen para cubrir el contenedor */
+    /* Alternativa: object-fit: contain; para ajustar la imagen dentro del contenedor sin recortar */
+}
+
+.carousel-content {
+    position: absolute;
+    bottom: 20%;
+    left: 10%;
+    color: #fff;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+    max-width: 600px;
+    z-index: 2;
+}
+
+.carousel-content h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.carousel-content p {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.btn-primary {
+    display: inline-block;
+    background-color: #f39c12;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+    background-color: #e67e22;
+    transform: scale(1.05);
+}
+
+/* Controles de Navegación */
+.carousel-controls {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+    z-index: 3;
+}
+
+.carousel-controls button {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 2rem;
+    transition: background-color 0.3s ease;
+}
+
+.carousel-controls button:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Añadir animación de transición */
+.carousel-container {
+    transition: transform 0.5s ease-in-out;
+}
+
+/* Añadir animación de desvanecimiento para el contenido */
+.carousel-content {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.carousel-slide.active .carousel-content {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+
+/* Estilos para la sección de Objetivos Educacionales */
+.objectives {
+    background: #f9f9f9; /* Fondo gris claro */
+    padding: 60px 20px;
+    border-radius: 12px;
+    margin: 20px 0;
+    color: #333; /* Texto oscuro para buen contraste */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Fuente moderna y elegante */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave para profundidad */
+}
+
+.objectives .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.objectives h1 {
+    font-size: 2.5em;
+    color: #2c3e50; /* Tono oscuro para el título principal */
+    margin-bottom: 30px;
+    text-align: center;
+    font-weight: 700; /* Negrita para el título principal */
+    border-bottom: 2px solid #3498db; /* Línea decorativa debajo del título */
+    padding-bottom: 10px;
+}
+
+.objectives .objectives-list {
+    background: #fff; /* Fondo blanco para la lista */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra sutil para la lista */
+}
+
+.objectives .objectives-list h2 {
+    font-size: 2em;
+    color: #3498db; /* Color azul para los subtítulos */
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: 600; /* Negrita para el subtítulo */
+    border-bottom: 2px solid #3498db; /* Línea decorativa debajo del subtítulo */
+    padding-bottom: 10px;
+}
+
+.objectives .objectives-list ol {
+    margin: 0;
+    padding: 0;
+    list-style: none; /* Elimina los puntos de la lista */
+}
+
+.objectives .objectives-list ol li {
+    font-size: 1.2em;
+    line-height: 1.6;
+    margin-bottom: 15px;
+    padding: 15px;
+    border-radius: 8px;
+    background: #f0f0f0; /* Fondo gris muy claro para los ítems */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra suave para los ítems de la lista */
+    position: relative;
+}
+
+.objectives .objectives-list ol li::before {
+    content: "";
+    display: block;
+    width: 8px;
+    height: 8px;
+    background: #3498db; /* Color azul para los indicadores */
+    border-radius: 50%;
+    position: absolute;
+    left: -20px; /* Espacio para el indicador */
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* Estilos para la sección Acerca de Nosotros */
+.about-us {
+    background: #f4f4f4; /* Fondo gris claro */
+    padding: 60px 20px;
+    border-radius: 12px;
+    margin: 20px 0;
+    color: #333; /* Texto oscuro para contraste */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Fuente elegante y moderna */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave para profundidad */
+}
+
+.about-us .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.about-us h1 {
+    font-size: 2.5em;
+    color: #2c3e50; /* Tono oscuro para los encabezados */
+    margin-bottom: 30px;
+    text-align: center;
+    font-weight: 700; /* Negrita para mayor impacto */
+    border-bottom: 2px solid #3498db; /* Línea decorativa debajo del título */
+    padding-bottom: 10px;
+}
+
+.about-us p {
+    font-size: 1.2em;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    text-align: center; /* Alineación central para el texto */
+}
+
+.about-us .intro, .about-us .history, .about-us .mission-vision {
+    background: #fff; /* Fondo blanco para las secciones internas */
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra sutil para profundidad */
+}
+
+.about-us .intro p,
+.about-us .history p,
+.about-us .mission-vision p {
+    color: #555; /* Texto gris oscuro para una lectura cómoda */
+    margin: 0;
+}
+
+.about-us .intro h2,
+.about-us .history h2,
+.about-us .mission-vision h2 {
+    font-size: 1.8em;
+    color: #3498db; /* Color azul para los encabezados */
+    margin-bottom: 15px;
+    text-align: center;
+    font-weight: 600; /* Negrita para destacar */
+}
+
+.about-us .intro::before,
+.about-us .history::before,
+.about-us .mission-vision::before {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: #3498db; /* Línea decorativa en color azul */
+    margin: 0 auto 20px auto;
+    border-radius: 2px;
+}
+
+
+/* Estilos para el footer */
+footer {
+    background: #2c3e50; /* Fondo oscuro para el footer */
+    color: #ecf0f1; /* Texto claro para buen contraste */
+    padding: 40px 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Fuente moderna */
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    border-top: 1px solid #34495e; /* Línea superior sutil */
+}
+
+.footer-content p {
+    margin: 0;
+    font-size: 1em;
+    padding-bottom: 20px;
+}
+
+.footer-nav {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 20px;
+}
+
+.footer-nav li {
+    margin: 0;
+}
+
+.footer-nav a {
+    color: #ecf0f1; /* Color claro para los enlaces */
+    text-decoration: none;
+    font-size: 0.9em;
+    transition: color 0.3s ease;
+}
+
+.footer-nav a:hover {
+    color: #3498db; /* Color azul para el hover */
+}
+
+.footer-social {
+    margin-top: 20px;
+    display: flex;
+    gap: 15px;
+}
+
+.footer-social .social-icon {
+    display: inline-block;
+    color: #ecf0f1; /* Color de los íconos */
+    font-size: 24px;
+    transition: color 0.3s ease;
+}
+
+.footer-social .social-icon:hover {
+    color: #3498db; /* Color azul para el hover */
+}
